@@ -6,7 +6,7 @@
 /*   By: tyamauch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 18:42:27 by tyamauch          #+#    #+#             */
-/*   Updated: 2024/01/06 20:27:58 by tyamauch         ###   ########.fr       */
+/*   Updated: 2024/01/07 17:44:13 by tyamauch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../include/philo.h"
@@ -57,7 +57,7 @@ bool	is_dead(t_philo *philo)
 		pthread_mutex_unlock(&p->mutex_philo);
 		if (jugde_time > p->share->info->time_die)
 		{
-			put_log(philo, DIED);
+			put_log(p, DIED);
 			flag = true;
 			break ;
 		}
