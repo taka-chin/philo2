@@ -6,7 +6,7 @@
 /*   By: tyamauch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 19:27:28 by tyamauch          #+#    #+#             */
-/*   Updated: 2024/01/06 22:41:55 by tyamauch         ###   ########.fr       */
+/*   Updated: 2024/01/08 17:37:51 by tyamauch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,23 @@ static void	death_game(t_philo *philo)
 		usleep(100);
 	pthread_mutex_lock(&philo->left_fork->mutex_fork);
 	put_log(philo, BEFORE_EAT);
-	pthread_mutex_lock(&philo->right_fork->mutex_fork);
-	put_log(philo, BEFORE_EAT);
-	put_log(philo, EAT);
-	pthread_mutex_lock(&philo->mutex_philo);
-	philo->eat_count++;
-	pthread_mutex_unlock(&philo->mutex_philo);
-	usleep(philo->share->info->time_eat * 1000);
-	pthread_mutex_unlock(&philo->left_fork->mutex_fork);
-	pthread_mutex_unlock(&philo->right_fork->mutex_fork);
-	put_log(philo, SLEEP);
-	usleep(philo->share->info->time_sleep * 1000);
-	put_log(philo, THINK);
+	if (philo->share->info->number != 1)
+	{
+		pthread_mutex_lock(&philo->right_fork->mutex_fork);
+		put_log(philo, BEFORE_EAT);
+		put_log(philo, EAT);
+		pthread_mutex_lock(&philo->mutex_philo);
+		philo->eat_count++;
+		pthread_mutex_unlock(&philo->mutex_philo);
+		usleep(philo->share->info->time_eat * 1000);
+		pthread_mutex_unlock(&philo->left_fork->mutex_fork);
+		pthread_mutex_unlock(&philo->right_fork->mutex_fork);
+		put_log(philo, SLEEP);
+		usleep(philo->share->info->time_sleep * 1000);
+		put_log(philo, THINK);
+	}
+	else
+		pthread_mutex_unlock(&philo->left_fork->mutex_fork);
 }
 
 int	get_thread_num(t_share *share)
@@ -56,13 +61,9 @@ void	*dead_or_alive(void *arg)
 	put_log(philo, THINK);
 	while (true)
 	{
-		while (i < )
-		{
-			if (check_finish(&philo[i]))
-				break ;
-			death_game(philo);
-			i++;
-		}
+		if (check_finish(philo))
+			break ;
+		death_game(philo);
 	}
 	return (NULL);
 }
