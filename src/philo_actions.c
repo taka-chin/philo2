@@ -6,7 +6,7 @@ static void waiting(t_philo *philo)
 	put_log(philo, BEFORE_EAT);
 	if(philo->share->info->number != 1)
 	{
-		pthread_mutex_lock(&philo->right->mutex_fork);
+		pthread_mutex_lock(&philo->right_fork->mutex_fork);
 		put_log(philo, BEFORE_EAT);
 	}
 	pthread_mutex_unlock(&philo->left_fork->mutex_fork);
