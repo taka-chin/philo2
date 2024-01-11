@@ -12,6 +12,16 @@
 
 #include "philo.h"
 
+int	get_thread_num(t_share *share)
+{
+	int	thread_num;
+
+	pthread_mutex_lock(&share->mutex_finish);
+	thread_num = share->thread_num;
+	pthread_mutex_unlock(&share->mutex_finish);
+	return (thread_num);
+}
+
 int	all_free(t_info *input, t_fork *fork, t_share *share, t_philo *philo)
 {
 	int	number;

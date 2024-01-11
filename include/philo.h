@@ -87,12 +87,12 @@ void				put_log(t_philo *philo, int state);
 void				debug_printf(t_info *s);
 void				pthreads_create(t_philo *philo);
 void				pthreads_join(t_philo *philo);
-void				*eating(void *arg);
 void				*ft_calloc(size_t count, size_t size);
 void				ft_bzero(void *s, size_t n);
 void				debug_printf(t_info *s);
 void				debug_printf_philo(t_philo *s);
 void				*dead_or_alive(void *arg);
+void 				death_game(t_philo *philo);
 void				*observe(t_philo *philo);
 int					all_free(t_info *input, t_fork *fork, t_share *share,
 						t_philo *philo);

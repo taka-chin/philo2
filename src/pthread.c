@@ -43,23 +43,3 @@ void	pthreads_create(t_philo *philo)
 	pthread_mutex_unlock(&philo->share->mutex_finish);
 	observe(philo);
 }
-
-/* void	pthreads_destory(t_fork *fork, t_share *share,
-			t_philo *philo,int number) */
-/* { */
-/* 	t_fork	*fork_p; */
-/* 	t_share	*share; */
-/* 	t_philo	*philo_p; */
-/* 	int		i; */
-
-/* 	i = 0; */
-/* 	pthread_mutex_destroy(&share->mutex_finish); */
-/* 	while (i < number) */
-/* 	{ */
-/* 		fork_p = &fork[i]; */
-/* 		philo_p = &philo[i]; */
-/* 		pthread_mutex_destroy(&fork_p->fork); */
-/* 		pthread_mutex_destroy(&filo_p->fork); */
-/* 		i++; */
-/* 	} */
-/* } */
