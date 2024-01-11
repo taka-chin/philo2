@@ -23,7 +23,7 @@ void	fork_destory(t_fork *fork, int i)
 
 void	share_destory(t_share *share)
 {
-	pthread_mutex_destroy(&share -> mutex_finish);
+	pthread_mutex_destroy(&share -> mutex_share);
 	free(share);
 }
 

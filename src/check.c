@@ -93,8 +93,8 @@ bool	check_finish(t_philo *philo)
 	bool	flag;
 
 	flag = false;
-	pthread_mutex_lock(&philo->share->mutex_finish);
+	pthread_mutex_lock(&philo->share->mutex_share);
 	flag = philo->share->finish;
-	pthread_mutex_unlock(&philo->share->mutex_finish);
+	pthread_mutex_unlock(&philo->share->mutex_share);
 	return (flag);
 }

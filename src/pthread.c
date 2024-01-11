@@ -37,9 +37,9 @@ void	pthreads_create(t_philo *philo)
 		philo_p = &philo[i++];
 		pthread_create(&philo_p->thread, NULL, dead_or_alive, philo_p);
 	}
-	pthread_mutex_lock(&philo->share->mutex_finish);
+	pthread_mutex_lock(&philo->share->mutex_share);
 	philo->share->thread_num = -1;
 	gettimeofday(&philo->share->start_time, NULL);
-	pthread_mutex_unlock(&philo->share->mutex_finish);
+	pthread_mutex_unlock(&philo->share->mutex_share);
 	observe(philo);
 }

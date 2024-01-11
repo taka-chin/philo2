@@ -36,7 +36,7 @@ typedef struct s_info
 
 typedef struct s_share
 {
-	pthread_mutex_t	mutex_finish;
+	pthread_mutex_t	mutex_share;
 	bool			finish;
 	struct timeval	start_time;
 	int				thread_num;

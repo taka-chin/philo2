@@ -69,7 +69,7 @@ t_share	*init_share(t_info *input)
 		ft_put_error(CALLOC_ERROR);
 		return (NULL);
 	}
-	if (pthread_mutex_init(&share->mutex_finish, NULL) != 0)
+	if (pthread_mutex_init(&share->mutex_share, NULL) != 0)
 	{
 		share_destory(share);
 		return (NULL);

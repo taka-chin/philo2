@@ -30,9 +30,9 @@ void	put_log(t_philo *philo, int e_state)
 	bool		fin_flag;
 
 	log_time = create_time(philo);
-	pthread_mutex_lock(&philo->share->mutex_finish);
+	pthread_mutex_lock(&philo->share->mutex_share);
 	fin_flag = philo->share->finish;
-	pthread_mutex_unlock(&philo->share->mutex_finish);
+	pthread_mutex_unlock(&philo->share->mutex_share);
 	if (fin_flag)
 		return ;
 	else if (e_state == DIED)

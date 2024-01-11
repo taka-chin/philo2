@@ -19,9 +19,9 @@ static bool	happy_end(t_philo *philo)
 	flag = false;
 	if (is_stuffed(philo))
 	{
-		pthread_mutex_lock(&philo->share->mutex_finish);
+		pthread_mutex_lock(&philo->share->mutex_share);
 		philo->share->finish = true;
-		pthread_mutex_unlock(&philo->share->mutex_finish);
+		pthread_mutex_unlock(&philo->share->mutex_share);
 		flag = true;
 	}
 	return (flag);
@@ -34,9 +34,9 @@ static bool	bad_end(t_philo *philo)
 	flag = false;
 	if (is_dead(philo))
 	{
-		pthread_mutex_lock(&philo->share->mutex_finish);
+		pthread_mutex_lock(&philo->share->mutex_share);
 		philo->share->finish = true;
-		pthread_mutex_unlock(&philo->share->mutex_finish);
+		pthread_mutex_unlock(&philo->share->mutex_share);
 		flag = true;
 	}
 	return (flag);
