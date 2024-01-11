@@ -6,7 +6,7 @@
 /*   By: tyamauch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 17:19:44 by tyamauch          #+#    #+#             */
-/*   Updated: 2024/01/06 19:09:18 by tyamauch         ###   ########.fr       */
+/*   Updated: 2024/01/11 20:31:09 by tyamauch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,9 +95,13 @@ static bool	set_philo_value(int number, t_fork *fork, t_share *share,
 			return (false);
 		}
 		philo[i].id = i + 1;
-		philo[i].left_fork = &fork[i];
-		philo[i].right_fork = &fork[(i + 1) % number];
 		philo[i].share = share;
+		if(i != number - 1)
+		{
+			philo[i].left_fork = &fork[i];
+			if(i == 0 && number != 1)
+				philo[i].right_fork = &fork[number - 1];
+		}
 		i++;
 	}
 	return (true);
