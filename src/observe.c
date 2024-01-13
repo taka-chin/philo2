@@ -6,7 +6,7 @@
 /*   By: tyamauch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 19:26:41 by tyamauch          #+#    #+#             */
-/*   Updated: 2024/01/06 21:25:30 by tyamauch         ###   ########.fr       */
+/*   Updated: 2024/01/14 02:16:11 by tyamauch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,13 @@ void	*observe(t_philo *philo)
 	{
 		if (get_thread_num(philo->share) == -1)
 			break ;
-		usleep(100);
+		actual_usleep(100);
 	}
 	while (true)
 	{
 		if (bad_end(philo) || happy_end(philo))
 			break ;
-		usleep(100);
+		actual_usleep(100);
 	}
 	return (NULL);
 }

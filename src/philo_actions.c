@@ -38,7 +38,7 @@ static void thinking(t_philo *philo)
 void death_game(t_philo *philo)
 {
 	if (philo->id % 2 == 0)
-		usleep(5000);
+		actual_usleep(5000);
 	waiting(philo);
 	eating(philo);
 	sleeping(philo);
