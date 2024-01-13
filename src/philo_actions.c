@@ -9,7 +9,7 @@ static void waiting(t_philo *philo)
 		pthread_mutex_lock(&philo->right_fork->mutex_fork);
 		put_log(philo, BEFORE_EAT);
 	}
-	pthread_mutex_unlock(&philo->left_fork->mutex_fork);
+	/* pthread_mutex_unlock(&philo->left_fork->mutex_fork); */
 }
 
 static void eating(t_philo *philo)
@@ -28,7 +28,6 @@ static void sleeping(t_philo *philo)
 {
 		put_log(philo, SLEEP);
 		usleep(philo->share->info->time_sleep * 1000);
-
 }
 
 static void thinking(t_philo *philo)

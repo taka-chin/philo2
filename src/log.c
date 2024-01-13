@@ -6,23 +6,23 @@
 /*   By: tyamauch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 19:26:29 by tyamauch          #+#    #+#             */
-/*   Updated: 2024/01/06 19:26:30 by tyamauch         ###   ########.fr       */
+/*   Updated: 2024/01/14 02:12:09 by tyamauch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-long int	create_time(t_philo *philo)
-{
-	struct timeval	tp;
-	long int		log_time;
+/* long int	create_time(t_philo *philo) */
+/* { */
+/* 	struct timeval	tp; */
+/* 	long int		log_time; */
 
-	gettimeofday(&tp, NULL);
-	log_time = (tp.tv_sec - philo->share->start_time.tv_sec) * 1000000;
-	log_time += (tp.tv_usec - philo->share->start_time.tv_usec);
-	log_time /= 1000;
-	return (log_time);
-}
+/* 	gettimeofday(&tp, NULL); */
+/* 	log_time = (tp.tv_sec - philo->share->start_time.tv_sec) * 1000000; */
+/* 	log_time += (tp.tv_usec - philo->share->start_time.tv_usec); */
+/* 	log_time /= 1000; */
+/* 	return (log_time); */
+/* } */
 
 void	put_log(t_philo *philo, int e_state)
 {
