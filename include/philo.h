@@ -6,7 +6,7 @@
 /*   By: tyamauch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 17:14:52 by tyamauch          #+#    #+#             */
-/*   Updated: 2024/01/06 19:20:41 by tyamauch         ###   ########.fr       */
+/*   Updated: 2024/01/11 20:37:08 by tyamauch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,7 @@ typedef struct s_share
 typedef struct s_fork
 {
 	pthread_mutex_t	mutex_fork;
-	int				last_id;
-	bool			now_use;
+	bool			clean;
 }					t_fork;
 
 typedef struct s_philo
