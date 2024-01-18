@@ -25,7 +25,7 @@ void	put_log(t_philo *philo, int e_state)
 		return ;
 	else if (e_state == DIED)
 		printf("%ld %d died\n", log_time, philo->id);
-	else if (e_state == BEFORE_EAT)
+	else if (e_state == TAKE_FORK)
 		printf("%ld %d has taken a fork\n", log_time, philo->id);
 	else if (e_state == EAT)
 	{

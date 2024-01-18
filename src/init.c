@@ -54,7 +54,6 @@ t_fork	*init_fork(t_info *input)
 			fork_destory(fork, i);
 			return (NULL);
 		}
-		fork_p->id = i + 1;
 		i++;
 	}
 	return (fork);

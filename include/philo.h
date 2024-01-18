@@ -46,8 +46,8 @@ typedef struct s_share
 typedef struct s_fork
 {
 	pthread_mutex_t	mutex_fork;
-	int				id;
 	bool			clean;
+	int id;
 }					t_fork;
 
 typedef struct s_philo
@@ -65,7 +65,7 @@ typedef struct s_philo
 enum				e_state
 {
 	EAT,
-	BEFORE_EAT,
+	TAKE_FORK,
 	SLEEP,
 	THINK,
 	DIED
