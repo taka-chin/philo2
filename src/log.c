@@ -12,18 +12,6 @@
 
 #include "philo.h"
 
-/* long int	create_time(t_philo *philo) */
-/* { */
-/* 	struct timeval	tp; */
-/* 	long int		log_time; */
-
-/* 	gettimeofday(&tp, NULL); */
-/* 	log_time = (tp.tv_sec - philo->share->start_time.tv_sec) * 1000000; */
-/* 	log_time += (tp.tv_usec - philo->share->start_time.tv_usec); */
-/* 	log_time /= 1000; */
-/* 	return (log_time); */
-/* } */
-
 void	put_log(t_philo *philo, int e_state)
 {
 	long int	log_time;
@@ -42,6 +30,8 @@ void	put_log(t_philo *philo, int e_state)
 	else if (e_state == EAT)
 	{
 		pthread_mutex_lock(&philo->mutex_philo);
+		printf("%d %p\n",philo->left_fork->id,&philo->left_fork);
+		printf("%d %p\n",philo->right_fork->id,&philo->right_fork); 
 		philo->active_time = log_time;
 		pthread_mutex_unlock(&philo->mutex_philo);
 		printf("%ld %d is eating\n", log_time, philo->id);

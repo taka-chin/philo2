@@ -46,6 +46,7 @@ typedef struct s_share
 typedef struct s_fork
 {
 	pthread_mutex_t	mutex_fork;
+	int				id;
 	bool			clean;
 }					t_fork;
 
@@ -108,4 +109,6 @@ int					get_thread_num(t_share *share);
 void				fork_destory(t_fork *fork, int i);
 void				share_destory(t_share *share);
 void				philo_destory(t_philo *philo, int i);
+void 				actual_usleep(long int sleep_time);
+long int 		get_now_time();
 #endif
