@@ -24,20 +24,20 @@ void	put_log(t_philo *philo, int e_state)
 	if (fin_flag)
 		return ;
 	else if (e_state == DIED)
-		printf("%ld %d died\n", log_time, philo->id);
+		printf("\033[31m%ld %d died\033[0m\n", log_time, philo->id);
 	else if (e_state == TAKE_FORK)
-		printf("%ld %d has taken a fork\n", log_time, philo->id);
+		printf("\033[32m%ld %d has taken a fork\033[0m\n", log_time, philo->id);
 	else if (e_state == EAT)
 	{
 		pthread_mutex_lock(&philo->mutex_philo);
-		printf("%d %p\n",philo->left_fork->id,&philo->left_fork);
-		printf("%d %p\n",philo->right_fork->id,&philo->right_fork); 
+		printf("\033[31m%d %p\033[0m\n",philo->left_fork->id,&philo->left_fork);
+		printf("\033[31m%d %p\033[0m\n",philo->right_fork->id,&philo->right_fork); 
 		philo->active_time = log_time;
 		pthread_mutex_unlock(&philo->mutex_philo);
-		printf("%ld %d is eating\n", log_time, philo->id);
+		printf("\033[34m%ld %d is eating\033[0m\n", log_time, philo->id);
 	}
 	else if (e_state == SLEEP)
-		printf("%ld %d is sleeping\n", log_time, philo->id);
+		printf("\033[34m%ld %d is sleeping\033[0m\n", log_time, philo->id);
 	else if (e_state == THINK)
-		printf("%ld %d is thinking\n", log_time, philo->id);
+		printf("\033[34m%ld %d is thinking\033[0m\n", log_time, philo->id);
 }

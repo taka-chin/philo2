@@ -23,6 +23,10 @@
 # include <sysexits.h>
 # include <unistd.h>
 
+#  define RED	"\033[31m"
+#  define GREEN	"\033[32m"
+#  define BLUE	"\033[34m"
+
 # define ERROR 1
 
 typedef struct s_info

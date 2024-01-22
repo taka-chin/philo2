@@ -20,10 +20,10 @@ int	main(int argc, char *argv[])
 	t_philo	*philo;
 
 	if (!input_check(argc, argv))
-		return (1);
+		return (ERROR);
 	input = init_info(argc, argv);
 	if (!input)
-		return (1);
+		return (ERROR);
 	fork = init_fork(input);
 	if (!fork)
 		return (all_free(input, NULL, NULL, NULL));

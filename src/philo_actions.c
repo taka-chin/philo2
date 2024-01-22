@@ -22,7 +22,7 @@ static void eating(t_philo *philo)
 		pthread_mutex_lock(&philo->mutex_philo);
 		philo->eat_count++;
 		pthread_mutex_unlock(&philo->mutex_philo);
-		actual_usleep(philo->share->info->time_eat * 1000);
+		actual_usleep(philo->share->info->time_eat);
 }
 
 static void put_fork(t_philo *philo)
@@ -35,7 +35,7 @@ static void put_fork(t_philo *philo)
 static void sleeping(t_philo *philo)
 {
 		put_log(philo, SLEEP);
-		actual_usleep(philo->share->info->time_sleep * 1000);
+		actual_usleep(philo->share->info->time_sleep);
 }
 
 static void thinking(t_philo *philo)
@@ -46,7 +46,7 @@ static void thinking(t_philo *philo)
 void death_game(t_philo *philo)
 {
 	if (philo->id % 2 == 0)
-		actual_usleep(5000);
+		actual_usleep(500);
 	if(take_fork(philo))
 	{
 		eating(philo);
@@ -54,4 +54,6 @@ void death_game(t_philo *philo)
 		sleeping(philo);
 		thinking(philo);
 	}
+	else
+		put_fork(philo);
 }

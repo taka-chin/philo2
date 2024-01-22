@@ -23,7 +23,6 @@ void	*dead_or_alive(void *arg)
 			break ;
 		actual_usleep(100);
 	}
-	put_log(philo, THINK);
 	while (true)
 	{
 		if (check_finish(philo))

@@ -96,12 +96,11 @@ static bool	set_philo_value(int number, t_fork *fork, t_share *share,
 		}
 		philo[i].id = i + 1;
 		philo[i].share = share;
-		/* if(i != number - 1) */
-		/* { */
-			philo[i].left_fork = &fork[i];
-			/* if(i == 0 && number != 1) */
-			philo[i].right_fork = &fork[(i + 1)% number];
-		/* } */
+		philo[i].right_fork = &fork[i];
+		if(i == number - 1)
+			philo[i].left_fork = &fork[(0)];
+		else
+			philo[i].left_fork = &fork[i + 1];
 		i++;
 	}
 	return (true);
