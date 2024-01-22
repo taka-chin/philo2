@@ -51,7 +51,7 @@ bool	is_dead(t_philo *philo)
 	while (i < philo->share->info->number)
 	{
 		p = &philo[i];
-		log_time = create_time(philo);
+		log_time = create_log_time(philo);
 		pthread_mutex_lock(&p->mutex_philo);
 		jugde_time = log_time - (p->active_time);
 		pthread_mutex_unlock(&p->mutex_philo);

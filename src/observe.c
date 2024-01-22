@@ -44,6 +44,9 @@ static bool	bad_end(t_philo *philo)
 
 void	*observe(t_philo *philo)
 {
+	int i;
+
+	i = 0;
 	while (true)
 	{
 		if (get_thread_num(philo->share) == -1)
@@ -56,5 +59,14 @@ void	*observe(t_philo *philo)
 			break ;
 		actual_usleep(100);
 	}
+	while(i < philo->share->info->number)
+	{
+		pthread_mutex_unlock(&philo->left_fork->mutex_fork);
+		if(&philo->left_fork->id != &philo->right_fork->id)
+			pthread_mutex_unlock(&philo->right_fork->mutex_fork);
+		i++;
+	}
+	/* printf("debug\n"); */
+	/* pthreads_join(philo); */
 	return (NULL);
 }

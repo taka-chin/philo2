@@ -34,6 +34,7 @@ int	main(int argc, char *argv[])
 	if (!philo)
 		return (all_free(input, fork, share, NULL));
 	pthreads_create(philo);
+	/* printf("debug main\n"); */
 	pthreads_join(philo);
 	all_free(input, fork, share, philo);
 	return (0);

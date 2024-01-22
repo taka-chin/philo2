@@ -85,7 +85,7 @@ enum				e_error_type
 int					ft_atoi(const char *str);
 int					ft_isdigit(int c);
 bool				input_check(int argc, char **input);
-long int			create_time(t_philo *philo);
+long int			create_log_time(t_philo *philo);
 void				ft_put_error(int e_error_type);
 void				put_log(t_philo *philo, int state);
 void				debug_printf(t_info *s);

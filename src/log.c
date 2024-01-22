@@ -17,7 +17,7 @@ void	put_log(t_philo *philo, int e_state)
 	long int	log_time;
 	bool		fin_flag;
 
-	log_time = create_time(philo);
+	log_time = create_log_time(philo);
 	pthread_mutex_lock(&philo->share->mutex_share);
 	fin_flag = philo->share->finish;
 	pthread_mutex_unlock(&philo->share->mutex_share);
@@ -30,8 +30,8 @@ void	put_log(t_philo *philo, int e_state)
 	else if (e_state == EAT)
 	{
 		pthread_mutex_lock(&philo->mutex_philo);
-		printf("\033[31m%d %p\033[0m\n",philo->left_fork->id,&philo->left_fork);
-		printf("\033[31m%d %p\033[0m\n",philo->right_fork->id,&philo->right_fork); 
+		/* printf("\033[31m%d %p\033[0m\n",philo->left_fork->id,&philo->left_fork); */
+		/* printf("\033[31m%d %p\033[0m\n",philo->right_fork->id,&philo->right_fork); */ 
 		philo->active_time = log_time;
 		pthread_mutex_unlock(&philo->mutex_philo);
 		printf("\033[34m%ld %d is eating\033[0m\n", log_time, philo->id);
