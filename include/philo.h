@@ -15,6 +15,7 @@
 #  define GREEN	"\033[32m"
 #  define BLUE	"\033[34m"
 #  define ERROR 1
+#  define SUCCESS 0
 
 enum				e_error_type
 {
@@ -45,6 +46,7 @@ typedef struct s_philo
 	int 		status;
 }					t_philo;
 
+/* pthread_createで渡す */
 typedef struct s_thread_data
 {
 	t_philo			*philo;
@@ -52,4 +54,23 @@ typedef struct s_thread_data
 	pthread_mutex_t			mutex_write;
 }					t_thread_data;	
 
+/* check */
+bool input_check(argc, argv);
+
+/* init */
+t_share	*init_share(int argc, char **input);
+t_philo	*init_philo(t_share *share);
+
+/* utils */
+void actual_usleep(long int sleep_time);
+int	all_free(t_share *share, t_philo *philo);
+long int	create_log_time(t_philo *philo);
+long int get_now_time();
+int	get_thread_num(t_share *share);
+
+/* utils ft*/
+int	ft_atoi(const char *str);
+void	ft_bzero(void *s, size_t n);
+void	*ft_calloc(size_t count, size_t size);
+int	ft_isdigit(int c);
 #endif
