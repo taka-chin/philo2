@@ -13,23 +13,23 @@ UTILS_DIR = utils
 OBJS_DIR = objs
 SRCS	:=	main.c \
 				error.c \
-				log.c \
-				pthread.c \
-				dead_or_alive.c \
-				init.c \
-				observe.c \
 				check.c \
-				philo_actions.c \
-				destory.c \
-				$(UTILS_DIR)/actual_usleep.c \
-				$(UTILS_DIR)/all_free.c \
-				$(UTILS_DIR)/create_log_time.c \
+				init.c \
 				$(UTILS_DIR)/ft_atoi.c \
 				$(UTILS_DIR)/ft_bzero.c \
 				$(UTILS_DIR)/ft_calloc.c \
 				$(UTILS_DIR)/ft_isdigit.c \
-				$(UTILS_DIR)/get_now_time.c \
+				$(UTILS_DIR)/all_free.c \
+				# $(UTILS_DIR)/get_now_time.c \
 				$(UTILS_DIR)/get_thread_num.c \
+				$(UTILS_DIR)/actual_usleep.c \
+				$(UTILS_DIR)/create_log_time.c \
+				# log.c \
+				pthread.c \
+				dead_or_alive.c \
+				observe.c \
+				philo_actions.c \
+				destory.c \
 
 SRCS	:=	$(addprefix ${SRCS_DIR}/, ${SRCS})
 

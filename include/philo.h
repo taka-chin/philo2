@@ -55,12 +55,14 @@ typedef struct s_thread_data
 }					t_thread_data;	
 
 /* check */
-bool input_check(argc, argv);
+bool input_check(int argc, char *argv[]);
 
 /* init */
 t_share	*init_share(int argc, char **input);
 t_philo	*init_philo(t_share *share);
 
+/* put */
+void	ft_put_error(int error_type);
 /* utils */
 void actual_usleep(long int sleep_time);
 int	all_free(t_share *share, t_philo *philo);

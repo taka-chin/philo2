@@ -1,18 +1,14 @@
 
 #include "philo.h"
 
-int	all_free(t_info *input, t_fork *fork, t_share *share, t_philo *philo)
+int	all_free(t_share *share, t_philo *philo)
 {
 	int	number;
 
-	number = input->number;
-	if (input != NULL)
-		free(input);
-	if (fork != NULL)
-		fork_destory(fork, number);
+	number = share->number;
 	if (share != NULL)
-		share_destory(share);
+		return (number);
 	if (philo != NULL)
-		philo_destory(philo, number);
+		return (1);
 	return (1);
 }
