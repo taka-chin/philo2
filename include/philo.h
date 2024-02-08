@@ -37,7 +37,8 @@ typedef struct s_philo
 {
 	t_share			*share;
 	pthread_t		thread;
-	pthread_mutex_t	mutex_philo;
+	pthread_mutex_t	mutex_read;
+	pthread_mutex_t	mutex_write;
 	pthread_mutex_t			*left_fork;
 	pthread_mutex_t			*right_fork;
 	int				id;
@@ -47,12 +48,12 @@ typedef struct s_philo
 }					t_philo;
 
 /* pthread_createで渡す */
-typedef struct s_thread_data
+typedef struct s_observe
 {
 	t_philo			*philo;
-	pthread_mutex_t			mutex_read;
-	pthread_mutex_t			mutex_write;
-}					t_thread_data;	
+	int dead;
+	bool finished;
+}					t_observe;
 
 /* check */
 bool input_check(int argc, char *argv[]);

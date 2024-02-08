@@ -49,8 +49,8 @@ static bool init_forks(t_philo *philo)
 	}
 	while (i < number)
 	{
-		philo[i].left_fork = &forks[i];
-		philo[i].right_fork = &forks[(i + 1) % number];
+		philo[i].right_fork = &forks[i];
+		philo[i].left_fork = &forks[(i + 1) % number];
 		i++;
 	}
 	return (true);
@@ -59,14 +59,24 @@ static bool init_forks(t_philo *philo)
 t_philo	*init_philo(t_share *share)
 {
 	t_philo	*philo;
+	int i;
 
 	philo = ft_calloc(share->number, sizeof(t_philo));
+	i = 0;
 	if (philo == NULL)
 	{
 		ft_put_error(CALLOC_ERROR);
 		return (NULL);
 	}
-	philo->share = share;
+	while(i < share->number)
+	{
+		philo[i]->share = share;
+		if(pthread_mutex_init(philo[i]->mutex_read, NULL) !=0)
+						return(NULL);
+		if(pthread_mutex_init(philo[i]->mutex_write, NULL) !=0)
+						return(NULL);
+		i++;
+	}
 	if(!init_forks(philo))
 		return (NULL);
 	return (philo);
