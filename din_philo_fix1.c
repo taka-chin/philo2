@@ -1,45 +1,46 @@
-#include <pthread.h>
-#include <stdio.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <errno.h>
-#include <assert.h>
-#include <stdint.h>
+/* #include <pthread.h> */
+/* #include <stdio.h> */
+/* #include <unistd.h> */
+/* #include <stdlib.h> */
+/* #include <errno.h> */
+/* #include <assert.h> */
+/* #include <stdint.h> */
 
-#define PHILOS 5
-#define DELAY 5000
-#define FOOD 100
+/* #define PHILOS 5 */
+/* #define DELAY 5000 */
+/* #define FOOD 100 */
 
-void * philosopher(void *id);
-void grab_chopstick(int , int , char *);
-void down_chopsticks(int , int );
-int food_on_table();
-void get_token();
-void return_token();
+/* void * philosopher(void *id); */
+/* void grab_chopstick(int , int , char *); */
+/* void down_chopsticks(int , int ); */
+/* int food_on_table(); */
+/* void get_token(); */
+/* void return_token(); */
 
-pthread_mutex_t chopstick[PHILOS];
-pthread_t philo[PHILOS];
-pthread_mutex_t food_lock;
-pthread_mutex_t num_can_eat_lock;
-int sleep_seconds = 0;
-uint32_t num_can_eat = PHILOS - 1;
+/* pthread_mutex_t chopstick[PHILOS]; */
+/* pthread_t philo[PHILOS]; */
+/* pthread_mutex_t food_lock; */
+/* pthread_mutex_t num_can_eat_lock; */
+/* int sleep_seconds = 0; */
+/* uint32_t num_can_eat = PHILOS - 1; */
 
-int main(int argn, char **argv)
-{
-			int i;
+/* int main(int argn, char **argv) */
+/* { */
+/* 			int i; */
 
-			if(argn == 2)
-					sleep_seconds = atoi(argv[1]);
+/* 			if(argn == 2) */
+/* 					sleep_seconds = atoi(argv[1]); */
 
-			pthread_mutex_init(&food_lock, NULL);
-			for(i = 0; i < PHILOS; i++)
-					pthread_mutex_init(&chopstick[i],NULL);
-			for(i = 0; i < PHILOS; i++)
-					pthread_create(&philo[i],NULL,philosopher,(void *)i);
-			for(i = 0; i < PHILOS; i++)
-					pthread_join(philo[i],NULL);
-			return (0);
-}
+/* 			pthread_mutex_init(&food_lock, NULL); */
+/* 			for(i = 0; i < PHILOS; i++) */
+/* 					pthread_mutex_init(&chopstick[i],NULL); */
+/* 			for(i = 0; i < PHILOS; i++) */
+/* 					pthread_create(&philo[i],NULL,philosopher,(void *)i); */
+/* 			for(i = 0; i < PHILOS; i++) */
+/* 					pthread_join(philo[i],NULL); */
+/* 			return (0); */
+/* } */
+#include "philo.h"
 
 void * philosopher(void * num)
 {
