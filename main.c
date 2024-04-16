@@ -2,10 +2,13 @@
 
 int main(int argc, char **argv)
 {
-			int i;
+			t_info info;
 
-			if(argc == 2)
-					sleep_seconds = atoi(argv[1]);
+			if (!input_check(argc, argv))
+				return (ERROR);
+			input = init_info(argc, argv);
+			if (!input)
+				return (ERROR);
 
 			pthread_mutex_init(&food_lock, NULL);
 			for(i = 0; i < PHILOS; i++)
