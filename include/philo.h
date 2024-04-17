@@ -6,6 +6,7 @@
 #include <stdbool.h>
 #include <stdint.h>
 #include <limits.h>
+#include <pthread.h>
 
 #define ERROR 1
 #define SUCCESS 0
@@ -26,7 +27,13 @@ enum e_error_type
 };
 
 bool input_check(int argc ,char **argv);
+
+/* init */
 t_info *init_info(int argc,char **argv);
+pthread_mutex_t *init_forks(t_info *input);
+
+/* destory */
+void fork_destory(pthread_mutex_t *forks,int i);
 
 /* utils */
 int ft_isdigit(int c);

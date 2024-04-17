@@ -20,3 +20,27 @@ t_info *init_info(int argc ,char **input)
 			info -> must_eat = -1;
 	return(info);
 }
+
+pthread_mutex_t *init_forks(t_info *input)
+{
+				int i;
+				pthread_mutex_t *forks;
+
+				i = 0;
+				forks = ft_calloc(input->number,sizeof(pthread_mutex_t));
+				if(forks == NULL)
+				{
+						ft_put_error(CALLOC_ERROR);
+						return(NULL);
+				}
+				while(i < input->number)
+				{
+							if(pthread_mutex_init(&forks[i],NULL)!= 0)
+							{
+									fork_destory(forks,i);
+									return(NULL);
+							}
+							i++;
+				}
+				return(forks);
+}
