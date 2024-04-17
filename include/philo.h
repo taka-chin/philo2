@@ -1,27 +1,37 @@
 #ifndef PHILO_H
 # define PHILO_H
 
-#include <pthread.h>
-#include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
-#include <errno.h>
-#include <assert.h>
+#include <stdbool.h>
 #include <stdint.h>
+#include <limits.h>
 
-#define PHILOS 5
-#define DELAY 5000
-#define FOOD 100
+#define ERROR 1
+#define SUCCESS 0
 
-void * philosopher(void *id);
-void grab_chopstick(int , int , char *);
-void down_chopsticks(int , int );
-int food_on_table();
-uint32_t get_token(uint32_t num_can_eat);
-void return_token(uint32_t num_can_eat);
+typedef struct s_info
+{
+	int number;
+	int time_die;
+	int time_eat;
+	int time_sleep;
+	int must_eat;
+}t_info;
 
-pthread_mutex_t chopstick[PHILOS];
-pthread_t philo[PHILOS];
-pthread_mutex_t food_lock;
-pthread_mutex_t num_can_eat_lock;
+enum e_error_type
+{
+	ARGS_ERROR,
+	CALLOC_ERROR,
+};
+
+bool input_check(int argc ,char **argv);
+t_info *init_info(int argc,char **argv);
+
+/* utils */
+int ft_isdigit(int c);
+int ft_atoi(const char *str);
+void ft_put_error(int e_error_type);
+void	ft_bzero(void *s, size_t n);
+void	*ft_calloc(size_t count, size_t size);
 #endif

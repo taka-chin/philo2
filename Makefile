@@ -2,16 +2,23 @@ NAME = philo
 
 CC = cc
 
-# CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 CFLAGS += -pthread
 # CFLAGS += -fsanitize=thread
 # CFLAGS += -fsanitize=address
 CFLAGS += -g
 
 SRCS_DIR = src
+UTILES_DIR = utils
 OBJS_DIR = objs
 SRCS	:=	main.c \
-			din_philo_fix1.c \
+			check.c \
+			init.c \
+			$(UTILES_DIR)/ft_isdigit.c \
+			$(UTILES_DIR)/ft_bzero.c \
+			$(UTILES_DIR)/ft_calloc.c \
+			$(UTILES_DIR)/ft_atoi.c \
+			$(UTILES_DIR)/ft_put_error.c \
 
 SRCS	:=	$(addprefix ${SRCS_DIR}/, ${SRCS})
 
