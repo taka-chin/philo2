@@ -11,6 +11,7 @@
 #define ERROR 1
 #define SUCCESS 0
 
+/* 標準入力から受け取る構造体 */
 typedef struct s_info
 {
 	int number;
@@ -20,6 +21,17 @@ typedef struct s_info
 	int must_eat;
 }t_info;
 
+/* pthread_createに渡す構造体 */
+typedef struct s_philo
+{
+	int id;
+	pthread_t thread;
+	pthread_mutex_t *r_fork;
+	pthread_mutex_t *l_fork;
+	t_info *info;
+}t_philo;
+
+/* エラーのenum */
 enum e_error_type
 {
 	ARGS_ERROR,
@@ -31,10 +43,12 @@ bool input_check(int argc ,char **argv);
 /* init */
 t_info *init_info(int argc,char **argv);
 pthread_mutex_t *init_forks(t_info *input);
+t_philo *init_philos(t_info *input,pthread_mutex_t *forks);
 
 /* destory */
 void fork_destory(pthread_mutex_t *forks,int i);
-void all_free(t_info *input,pthread_mutex_t *forks);
+void philo_destory(t_philo *philos);
+void all_free(t_info *input,pthread_mutex_t *forks,t_philo *philos);
 
 /* utils */
 int ft_isdigit(int c);

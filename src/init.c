@@ -44,3 +44,26 @@ pthread_mutex_t *init_forks(t_info *input)
 				}
 				return(forks);
 }
+
+t_philo *init_philos(t_info *input,pthread_mutex_t *forks)
+{
+				int i;
+				t_philo *philos;
+
+				i = 0;
+				philos = ft_calloc(input->number,sizeof(t_philo));
+				if(philos == NULL)
+				{
+						ft_put_error(CALLOC_ERROR);
+						return(NULL);
+				}
+				while(i < input->number)
+				{
+					philos[i].id = i+1;
+					philos[i].r_fork = &forks[i];
+					philos[i].l_fork = &forks[i + 1];
+					philos[i].info = input;
+					i++;
+				}
+				return(philos);
+}
