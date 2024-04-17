@@ -7,6 +7,7 @@
 #include <stdint.h>
 #include <limits.h>
 #include <pthread.h>
+#include <stdio.h>
 
 #define ERROR 1
 #define SUCCESS 0
@@ -49,6 +50,10 @@ t_philo *init_philos(t_info *input,pthread_mutex_t *forks);
 void fork_destory(pthread_mutex_t *forks,int i);
 void philo_destory(t_philo *philos);
 void all_free(t_info *input,pthread_mutex_t *forks,t_philo *philos);
+
+/* philo */
+void start(t_philo *philos);
+void *routine(void *arg);
 
 /* utils */
 int ft_isdigit(int c);
