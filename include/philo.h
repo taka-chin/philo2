@@ -26,6 +26,7 @@ typedef struct s_info
 typedef struct s_philo
 {
 	int id;
+	int eat_count;
 	pthread_t thread;
 	pthread_mutex_t *r_fork;
 	pthread_mutex_t *l_fork;
@@ -39,7 +40,9 @@ enum e_error_type
 	CALLOC_ERROR,
 };
 
+/* check */
 bool input_check(int argc ,char **argv);
+bool finish_check(t_philo *philos);
 
 /* init */
 t_info *init_info(int argc,char **argv);

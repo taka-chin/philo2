@@ -60,6 +60,7 @@ t_philo *init_philos(t_info *input,pthread_mutex_t *forks)
 				while(i < input->number)
 				{
 					philos[i].id = i+1;
+					philos[i].eat_count = 0;
 					philos[i].r_fork = &forks[i];
 					if(i == input->number - 1)
 						philos[i].l_fork = &forks[0];

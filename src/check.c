@@ -32,3 +32,10 @@ bool input_check(int argc ,char **argv)
 	}
 	return(true);
 }
+
+bool finish_check(t_philo *philos)
+{
+	if(philos->eat_count > philos->info->must_eat )
+		return(true);
+	return(false);
+}
