@@ -13,6 +13,7 @@ int main(int argc, char **argv)
 			forks = init_forks(input);
 			if (!forks)
 				return (ERROR);
+			all_free(input,forks);
 
 			return (SUCCESS);
 }

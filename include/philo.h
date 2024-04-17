@@ -34,6 +34,7 @@ pthread_mutex_t *init_forks(t_info *input);
 
 /* destory */
 void fork_destory(pthread_mutex_t *forks,int i);
+void all_free(t_info *input,pthread_mutex_t *forks);
 
 /* utils */
 int ft_isdigit(int c);
