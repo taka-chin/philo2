@@ -81,4 +81,5 @@ void ft_put_error(int e_error_type);
 void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t count, size_t size);
 long int create_log_time(t_philo *philo);
+long int get_now_time();
 #endif

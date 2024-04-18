@@ -33,9 +33,58 @@ bool input_check(int argc ,char **argv)
 	return(true);
 }
 
+static bool is_hunger(t_philo *philos)
+{
+	int i;
+
+	i = 0;
+	while(i < philos->info->number)
+	{
+		pthread_mutex_lock(&philos[i].mutex_philo);
+		if(philos[i].active_time > philos->info->time_die) 
+		{
+			pthread_mutex_unlock(&philos[i].mutex_philo);
+			return(true);
+		}
+		pthread_mutex_unlock(&philos[i].mutex_philo);
+		i++;
+	}
+	return(false);
+}
+
+static bool is_satiety(t_philo *philos)
+{
+	int i;
+
+	i = 0;
+	while(i < philos->info->number)
+	{
+		pthread_mutex_lock(&philos[i].mutex_philo);
+		if(philos[i].eat_count < philos->info->must_eat)
+		{
+			pthread_mutex_unlock(&philos[i].mutex_philo);
+			return(false);
+		}
+		pthread_mutex_unlock(&philos[i].mutex_philo);
+		i++;
+	}
+	return(false);
+}
+
 bool finish_check(t_philo *philos)
 {
-	if(philos->eat_count > philos->info->must_eat )
-		return(true);
-	return(false);
+	if(philos->eat_count == -1 )
+	{
+		if(is_hunger(philos))
+			return(true);
+		else
+			return(false);
+	}
+	else
+	{
+		if(is_hunger(philos) || is_satiety(philos))
+			return(true);
+		else
+			return(false);
+	}
 }
