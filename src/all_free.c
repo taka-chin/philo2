@@ -10,5 +10,5 @@ void all_free(t_info *input,pthread_mutex_t *forks,t_philo *philos)
 				if(forks != NULL)
 						fork_destory(forks,number);
 				if(philos != NULL)
-						philo_destory(philos);
+						philo_destory(philos,number);
 }

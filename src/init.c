@@ -37,6 +37,7 @@ pthread_mutex_t *init_forks(t_info *input)
 				{
 							if(pthread_mutex_init(&forks[i],NULL)!= 0)
 							{
+									ft_put_error(PTHREAD_ERROR);
 									fork_destory(forks,i);
 									return(NULL);
 							}
@@ -59,8 +60,16 @@ t_philo *init_philos(t_info *input,pthread_mutex_t *forks)
 				}
 				while(i < input->number)
 				{
+					if(pthread_mutex_init(&philos[i].mutex_philo,NULL)!= 0)
+					{
+						ft_put_error(PTHREAD_ERROR);
+						philo_destory(philos,i);
+						return(NULL);
+					}
 					philos[i].id = i+1;
 					philos[i].eat_count = 0;
+					/* philos[i].start_time = 0; */
+					philos[i].active_time = 0;
 					philos[i].r_fork = &forks[i];
 					if(i == input->number - 1)
 						philos[i].l_fork = &forks[0];

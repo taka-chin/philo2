@@ -8,6 +8,7 @@
 #include <limits.h>
 #include <pthread.h>
 #include <stdio.h>
+#include <sys/time.h>
 
 #define ERROR 1
 #define SUCCESS 0
@@ -27,7 +28,10 @@ typedef struct s_philo
 {
 	int id;
 	int eat_count;
+	struct timeval start_time;
+	long int active_time;
 	pthread_t thread;
+	pthread_mutex_t mutex_philo;
 	pthread_mutex_t *r_fork;
 	pthread_mutex_t *l_fork;
 	t_info *info;
@@ -38,6 +42,16 @@ enum e_error_type
 {
 	ARGS_ERROR,
 	CALLOC_ERROR,
+	PTHREAD_ERROR
+};
+
+/* 行動のenum */
+enum e_action_type
+{
+	TAKE_FORK,
+	EATING,
+	SLEEPING,
+	THINKING
 };
 
 /* check */
@@ -51,12 +65,14 @@ t_philo *init_philos(t_info *input,pthread_mutex_t *forks);
 
 /* destory */
 void fork_destory(pthread_mutex_t *forks,int i);
-void philo_destory(t_philo *philos);
+/* void philo_destory(t_philo *philos); */
+void philo_destory(t_philo *philos,int i);
 void all_free(t_info *input,pthread_mutex_t *forks,t_philo *philos);
 
 /* philo */
 void dining_philo(t_philo *philos);
 void *routine(void *arg);
+void put_log(t_philo *philo,int e_action);
 
 /* utils */
 int ft_isdigit(int c);
@@ -64,4 +80,5 @@ int ft_atoi(const char *str);
 void ft_put_error(int e_error_type);
 void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t count, size_t size);
+long int create_log_time(t_philo *philo);
 #endif

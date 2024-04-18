@@ -1,5 +1,25 @@
 #include "philo.h"
 
+static void take_fork(t_philo *philo)
+{
+	put_log(philo,TAKE_FORK);
+}
+
+static void eating(t_philo *philo)
+{
+	put_log(philo,EATING);
+}
+
+static void sleeping(t_philo *philo)
+{
+	put_log(philo,SLEEPING);
+}
+
+static void thinking(t_philo *philo)
+{
+	put_log(philo,THINKING);
+}
+
 void *routine(void *arg)
 {
 	t_philo *philos;
@@ -11,10 +31,12 @@ void *routine(void *arg)
 	{
 		if(finish_check(philos))
 			break;
-		/* mutex lock */
-		eat_count++;
-		/* mutex unlock*/
-		printf("routine\n");
+		take_fork(philos);
+		take_fork(philos);
+		eating(philos);
+		sleeping(philos);
+		thinking(philos);
 	}
 	return(NULL);
 }
+

@@ -18,11 +18,13 @@ SRCS	:=	main.c \
 			all_free.c \
 			dining_philo.c \
 			routine.c \
+			put_log.c \
 			$(UTILES_DIR)/ft_isdigit.c \
 			$(UTILES_DIR)/ft_bzero.c \
 			$(UTILES_DIR)/ft_calloc.c \
 			$(UTILES_DIR)/ft_atoi.c \
 			$(UTILES_DIR)/ft_put_error.c \
+			$(UTILES_DIR)/create_log_time.c \
 
 SRCS	:=	$(addprefix ${SRCS_DIR}/, ${SRCS})
 
