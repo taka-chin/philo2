@@ -11,7 +11,9 @@ void *routine(void *arg)
 	{
 		if(finish_check(philos))
 			break;
+		/* mutex lock */
 		eat_count++;
+		/* mutex unlock*/
 		printf("routine\n");
 	}
 	return(NULL);
