@@ -16,7 +16,7 @@ SRCS	:=	main.c \
 			init.c \
 			destory.c \
 			all_free.c \
-			start.c \
+			dining_philo.c \
 			routine.c \
 			$(UTILES_DIR)/ft_isdigit.c \
 			$(UTILES_DIR)/ft_bzero.c \

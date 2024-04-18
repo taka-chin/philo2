@@ -23,7 +23,7 @@ int main(int argc, char **argv)
 				all_free(input,forks,NULL);
 				return (ERROR);
 			}
-			start(philos);
+			dining_philo(philos);
 			all_free(input,forks,philos);
 			return (SUCCESS);
 }

@@ -55,7 +55,7 @@ void philo_destory(t_philo *philos);
 void all_free(t_info *input,pthread_mutex_t *forks,t_philo *philos);
 
 /* philo */
-void start(t_philo *philos);
+void dining_philo(t_philo *philos);
 void *routine(void *arg);
 
 /* utils */

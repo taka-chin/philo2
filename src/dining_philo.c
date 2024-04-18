@@ -27,7 +27,7 @@ static void p_join(t_philo *philos)
 	}
 }
 
-void start(t_philo *philos)
+void dining_philo(t_philo *philos)
 {
 	p_create(philos);
 	p_join(philos);
