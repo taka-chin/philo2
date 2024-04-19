@@ -68,7 +68,6 @@ t_philo *init_philos(t_info *input,pthread_mutex_t *forks)
 					}
 					philos[i].id = i+1;
 					philos[i].eat_count = 0;
-					/* philos[i].start_time = 0; */
 					philos[i].active_time = 0;
 					philos[i].r_fork = &forks[i];
 					if(i == input->number - 1)

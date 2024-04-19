@@ -24,6 +24,7 @@ int main(int argc, char **argv)
 				return (ERROR);
 			}
 			dining_philo(philos);
-			all_free(input,forks,philos);
+			if(finish_check(philos))
+				all_free(input,forks,philos);
 			return (SUCCESS);
 }

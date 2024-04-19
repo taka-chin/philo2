@@ -9,6 +9,7 @@ static void p_create(t_philo *philos)
 	while(i < philos->info->number)
 	{
 		p = &philos[i++];
+		gettimeofday(&p->start_time,NULL); 
 		pthread_create(&p->thread,NULL,routine,p);
 	}
 }

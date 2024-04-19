@@ -41,7 +41,7 @@ static bool is_hunger(t_philo *philos)
 	while(i < philos->info->number)
 	{
 		pthread_mutex_lock(&philos[i].mutex_philo);
-		if(philos[i].active_time > philos->info->time_die) 
+		if(get_now_time() - philos[i].active_time > philos->info->time_die) 
 		{
 			pthread_mutex_unlock(&philos[i].mutex_philo);
 			return(true);
@@ -73,7 +73,7 @@ static bool is_satiety(t_philo *philos)
 
 bool finish_check(t_philo *philos)
 {
-	if(philos->eat_count == -1 )
+	if(philos->info->must_eat == -1 )
 	{
 		if(is_hunger(philos))
 			return(true);
