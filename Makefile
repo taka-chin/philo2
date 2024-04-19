@@ -26,6 +26,7 @@ SRCS	:=	main.c \
 			$(UTILES_DIR)/ft_put_error.c \
 			$(UTILES_DIR)/create_log_time.c \
 			$(UTILES_DIR)/get_now_time.c \
+			$(UTILES_DIR)/actual_usleep.c \
 
 SRCS	:=	$(addprefix ${SRCS_DIR}/, ${SRCS})
 

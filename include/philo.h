@@ -82,4 +82,5 @@ void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t count, size_t size);
 long int create_log_time(t_philo *philo);
 long int get_now_time();
+void actual_usleep(long int sleep_time);
 #endif
