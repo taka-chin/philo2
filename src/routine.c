@@ -51,8 +51,13 @@ void *routine(void *arg)
 		actual_usleep(1);
 	while(true)
 	{
+		pthread_mutex_lock(&philos->mutex_philo);
 		if(philos->is_dead)
+		{
+			pthread_mutex_unlock(&philos->mutex_philo);
 			break;
+		}
+		pthread_mutex_unlock(&philos->mutex_philo);
 		take_fork(philos);
 		eating(philos);
 		sleeping(philos);
