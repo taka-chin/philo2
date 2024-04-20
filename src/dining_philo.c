@@ -10,8 +10,8 @@ static void p_create(t_philo *philos)
 	{
 		p = &philos[i++];
 		gettimeofday(&p->start_time,NULL); 
-		/* p->active_time = get_now_time(); */ 
-		p->active_time = (p->start_time.tv_sec * 1000 + p->start_time.tv_usec /1000); 
+		p->active_time = get_now_time(); 
+		/* p->active_time = (p->start_time.tv_sec * 1000 + p->start_time.tv_usec /1000); */ 
 		pthread_create(&p->thread,NULL,routine,p);
 	}
 }
