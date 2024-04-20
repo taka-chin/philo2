@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   destory.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tyamauch <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/20 22:19:39 by tyamauch          #+#    #+#             */
+/*   Updated: 2024/04/20 22:20:01 by tyamauch         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo.h"
 
 void	fork_destory(pthread_mutex_t *forks, int i)
@@ -9,7 +21,6 @@ void	fork_destory(pthread_mutex_t *forks, int i)
 	free(forks);
 }
 
-/* void philo_destory(t_philo *philos) */
 void	philo_destory(t_philo *philos, int i)
 {
 	while (--i)
