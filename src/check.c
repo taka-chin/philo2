@@ -44,6 +44,7 @@ static bool is_hunger(t_philo *philos)
 		if(get_now_time() - philos[i].active_time > philos->info->time_die) 
 		{
 			pthread_mutex_unlock(&philos[i].mutex_philo);
+			put_log(&philos[i],DIED);
 			return(true);
 		}
 		pthread_mutex_unlock(&philos[i].mutex_philo);
@@ -63,12 +64,12 @@ static bool is_satiety(t_philo *philos)
 		if(philos[i].eat_count < philos->info->must_eat)
 		{
 			pthread_mutex_unlock(&philos[i].mutex_philo);
-			return(false);
+				return(false);
 		}
 		pthread_mutex_unlock(&philos[i].mutex_philo);
 		i++;
 	}
-	return(false);
+	return(true);
 }
 
 bool finish_check(t_philo *philos)

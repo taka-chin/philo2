@@ -2,22 +2,41 @@
 
 static void take_fork(t_philo *philo)
 {
-	pthread_mutex_lock(philo->r_fork);
+	if(philo->id % 2 == 0)
+		pthread_mutex_lock(philo->r_fork);
+	else
+		pthread_mutex_lock(philo->l_fork);
 	put_log(philo,TAKE_FORK);
-	pthread_mutex_lock(philo->l_fork);
+	if(philo->r_fork == philo->l_fork)
+	{
+		pthread_mutex_unlock(philo->r_fork);
+		exit(1);
+	}
+	if(philo->id % 2 == 0)
+		pthread_mutex_lock(philo->l_fork);
+	else
+		pthread_mutex_lock(philo->r_fork);
 	put_log(philo,TAKE_FORK);
 }
 
 static void eating(t_philo *philo)
 {
 	put_log(philo,EATING);
+	actual_usleep(philo->info->time_eat );
 	pthread_mutex_lock(&philo->mutex_philo);
 	philo->active_time = get_now_time(); 
 	philo->eat_count++;
 	pthread_mutex_unlock(&philo->mutex_philo);
-	pthread_mutex_unlock(philo->r_fork);
-	pthread_mutex_unlock(philo->l_fork);
-	actual_usleep(philo->info->time_eat );
+	/* if(philo->id % 2 == 0) */
+	/* { */
+	/* 	pthread_mutex_unlock(philo->r_fork); */
+	/* 	pthread_mutex_unlock(philo->l_fork); */
+	/* } */
+	/* else */
+	/* { */
+		pthread_mutex_unlock(philo->l_fork);
+		pthread_mutex_unlock(philo->r_fork);
+	/* } */
 }
 
 static void sleeping(t_philo *philo)
@@ -36,12 +55,12 @@ void *routine(void *arg)
 	t_philo *philos;
 	
 	philos = (t_philo *)arg;
-	if(philos->id %2 == 0)
-		actual_usleep(100);
+	/* if(philos->id %2 == 0) */
+	/* 	actual_usleep(1); */
 	while(true)
 	{
-		/* if(finish_check(philos)) */
-		/* 	break; */
+		if(philos->is_dead)
+			break;
 		take_fork(philos);
 		eating(philos);
 		sleeping(philos);

@@ -30,6 +30,7 @@ typedef struct s_philo
 	int eat_count;
 	struct timeval start_time;
 	long int active_time;
+	bool is_dead;
 	pthread_t thread;
 	pthread_mutex_t mutex_philo;
 	pthread_mutex_t *r_fork;
@@ -51,7 +52,8 @@ enum e_action_type
 	TAKE_FORK,
 	EATING,
 	SLEEPING,
-	THINKING
+	THINKING,
+	DIED
 };
 
 /* check */
@@ -71,6 +73,7 @@ void all_free(t_info *input,pthread_mutex_t *forks,t_philo *philos);
 
 /* philo */
 void dining_philo(t_philo *philos);
+void p_join(t_philo *philos);
 void *routine(void *arg);
 void put_log(t_philo *philo,int e_action);
 
