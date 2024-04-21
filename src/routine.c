@@ -6,13 +6,13 @@
 /*   By: tyamauch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 22:10:39 by tyamauch          #+#    #+#             */
-/*   Updated: 2024/04/20 22:10:41 by tyamauch         ###   ########.fr       */
+/*   Updated: 2024/04/21 19:55:25 by tyamauch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-static void	take_fork(t_philo *philo)
+static bool	take_fork(t_philo *philo)
 {
 	if (philo->id % 2 == 0)
 		pthread_mutex_lock(philo->r_fork);
@@ -21,14 +21,15 @@ static void	take_fork(t_philo *philo)
 	put_log(philo, TAKE_FORK);
 	if (philo->r_fork == philo->l_fork)
 	{
-		actual_usleep(philo->info->time_die * 1.1);
 		pthread_mutex_unlock(philo->r_fork);
+		return (false);
 	}
 	if (philo->id % 2 == 0)
 		pthread_mutex_lock(philo->l_fork);
 	else
 		pthread_mutex_lock(philo->r_fork);
 	put_log(philo, TAKE_FORK);
+	return (true);
 }
 
 static void	eating(t_philo *philo)
@@ -70,7 +71,8 @@ void	*routine(void *arg)
 			break ;
 		}
 		pthread_mutex_unlock(&philos->mutex_philo);
-		take_fork(philos);
+		if (!take_fork(philos))
+			break ;
 		eating(philos);
 		sleeping(philos);
 		thinking(philos);
