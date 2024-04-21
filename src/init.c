@@ -6,7 +6,7 @@
 /*   By: tyamauch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 20:59:23 by tyamauch          #+#    #+#             */
-/*   Updated: 2024/04/21 15:37:51 by tyamauch         ###   ########.fr       */
+/*   Updated: 2024/04/21 17:49:58 by tyamauch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,10 +88,8 @@ static bool	set_value(t_info *input, t_philo *philos, pthread_mutex_t *forks)
 
 t_philo	*init_philos(t_info *input, pthread_mutex_t *forks)
 {
-	int		i;
 	t_philo	*philos;
 
-	i = 0;
 	philos = ft_calloc(input->number, sizeof(t_philo));
 	if (philos == NULL)
 	{
