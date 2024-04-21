@@ -6,7 +6,7 @@
 /*   By: tyamauch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 20:59:23 by tyamauch          #+#    #+#             */
-/*   Updated: 2024/04/21 13:15:58 by tyamauch         ###   ########.fr       */
+/*   Updated: 2024/04/21 13:16:44 by tyamauch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,9 @@ pthread_mutex_t	*init_forks(t_info *input)
 	return (forks);
 }
 
-static bool set_value(t_info *input ,t_philo *philos,pthread_mutex_t *forks)
+static bool	set_value(t_info *input, t_philo *philos, pthread_mutex_t *forks)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < input->number)
@@ -98,7 +98,7 @@ t_philo	*init_philos(t_info *input, pthread_mutex_t *forks)
 		ft_put_error(CALLOC_ERROR);
 		return (NULL);
 	}
-	if(!set_value(input,philos,forks))
-		return(NULL);
+	if (!set_value(input, philos, forks))
+		return (NULL);
 	return (philos);
 }
