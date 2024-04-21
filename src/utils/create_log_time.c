@@ -18,7 +18,7 @@ long int	create_log_time(t_philo *philo)
 	long int		log_time;
 
 	gettimeofday(&tp, NULL);
-	log_time = (tp.tv_sec - philo->start_time.tv_sec) *1000;
-	log_time += (tp.tv_usec - philo->start_time.tv_usec)/1000;
+	log_time = (tp.tv_sec - philo->start_time.tv_sec) * 1000;
+	log_time += (tp.tv_usec - philo->start_time.tv_usec) / 1000;
 	return (log_time);
 }

@@ -12,23 +12,23 @@
 
 #include "philo.h"
 
-static bool null_check(const char *s)
+static bool	null_check(const char *s)
 {
-		if(*s == '\0')
-		{
-				ft_put_error(ARGS_ERROR);
-				return (true);
-		}
-		else
-			return (false);
+	if (*s == '\0')
+	{
+		ft_put_error(ARGS_ERROR);
+		return (true);
+	}
+	else
+		return (false);
 }
 
 bool	input_check(int argc, char **argv)
 {
 	const char	*str;
 
-	if ((argc < 5 || argc > 6 || *argv[1] == '0')
-		|| (argc == 6 && *argv[5] == '0'))
+	if ((argc < 5 || argc > 6 || *argv[1] == '0') || (argc == 6
+			&& *argv[5] == '0'))
 	{
 		ft_put_error(ARGS_ERROR);
 		return (false);
@@ -36,8 +36,8 @@ bool	input_check(int argc, char **argv)
 	while (*++argv)
 	{
 		str = *argv;
-		if(null_check(str))
-				return (false);
+		if (null_check(str))
+			return (false);
 		while (*str)
 		{
 			if (!ft_isdigit(*str))
