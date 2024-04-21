@@ -6,7 +6,7 @@
 /*   By: tyamauch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 20:55:31 by tyamauch          #+#    #+#             */
-/*   Updated: 2024/04/20 20:55:48 by tyamauch         ###   ########.fr       */
+/*   Updated: 2024/04/21 15:37:26 by tyamauch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ bool	input_check(int argc, char **argv)
 {
 	const char	*str;
 
-	if (argc < 5 || argc > 6 || *argv[1] == '0')
+	if ((argc < 5 || argc > 6 || *argv[1] == '0')
+		|| (argc == 6 && *argv[5] == '0'))
 	{
 		ft_put_error(ARGS_ERROR);
 		return (false);

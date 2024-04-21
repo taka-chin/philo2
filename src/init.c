@@ -6,7 +6,7 @@
 /*   By: tyamauch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 20:59:23 by tyamauch          #+#    #+#             */
-/*   Updated: 2024/04/21 13:16:44 by tyamauch         ###   ########.fr       */
+/*   Updated: 2024/04/21 15:37:51 by tyamauch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_info	*init_info(int argc, char **input)
 	info->time_die = ft_atoi(input[2]);
 	info->time_eat = ft_atoi(input[3]);
 	info->time_sleep = ft_atoi(input[4]);
-	if (argc == 6)
+	if (argc == 6 && input[5] != 0)
 		info->must_eat = ft_atoi(input[5]);
 	else
 		info->must_eat = -1;
