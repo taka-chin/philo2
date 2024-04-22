@@ -6,7 +6,7 @@
 /*   By: tyamauch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 22:10:39 by tyamauch          #+#    #+#             */
-/*   Updated: 2024/04/22 21:54:32 by tyamauch         ###   ########.fr       */
+/*   Updated: 2024/04/22 22:35:53 by tyamauch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,8 @@ void	*routine(void *arg)
 
 	philos = (t_philo *)arg;
 	if (philos->id % 2 == 0)
-		actual_usleep(1);
+		usleep(10);
+		/* actual_usleep(1); */
 	while (true)
 	{
 		pthread_mutex_lock(&philos->mutex_philo);
@@ -76,6 +77,7 @@ void	*routine(void *arg)
 		eating(philos);
 		sleeping(philos);
 		thinking(philos);
+		usleep(100);
 	}
 	return (NULL);
 }
