@@ -20,6 +20,6 @@ long int	create_log_time(t_philo *philo)
 
 	gettimeofday(&tp, NULL);
 	log_stime = (tp.tv_sec - philo->start_time.tv_sec) * 1000000;
-	log_utime = (tp.tv_usec - philo->start_time.tv_usec) ;
-	return ((log_stime + log_utime) /1000);
+	log_utime = (tp.tv_usec - philo->start_time.tv_usec);
+	return ((log_stime + log_utime) / 1000);
 }

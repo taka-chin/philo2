@@ -6,7 +6,7 @@
 /*   By: tyamauch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 21:45:13 by tyamauch          #+#    #+#             */
-/*   Updated: 2024/04/21 15:06:19 by tyamauch         ###   ########.fr       */
+/*   Updated: 2024/04/22 16:16:11 by tyamauch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ static void	*observe(t_philo *philos)
 		pthread_mutex_lock(&p->mutex_philo);
 		p->is_dead = true;
 		pthread_mutex_unlock(&p->mutex_philo);
-		i++;
 	}
 	p_join(philos);
 	return (NULL);

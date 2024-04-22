@@ -20,6 +20,6 @@ long int	get_now_time(void)
 
 	gettimeofday(&tp, NULL);
 	now_stime = tp.tv_sec * 1000000;
-	now_utime = tp.tv_usec ;
-	return ((now_stime + now_utime) /1000);
+	now_utime = tp.tv_usec;
+	return ((now_stime + now_utime) / 1000);
 }
