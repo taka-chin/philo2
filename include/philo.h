@@ -6,7 +6,7 @@
 /*   By: tyamauch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 17:31:44 by tyamauch          #+#    #+#             */
-/*   Updated: 2024/04/22 17:31:47 by tyamauch         ###   ########.fr       */
+/*   Updated: 2024/04/22 19:04:58 by tyamauch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ typedef struct s_philo
 	int				id;
 	int				eat_count;
 	struct timeval	start_time;
-	long int		active_time;
+	struct timeval	active_time;
 	bool			is_dead;
 	pthread_t		thread;
 	pthread_mutex_t	mutex_philo;
@@ -80,7 +80,6 @@ t_philo				*init_philos(t_info *input, pthread_mutex_t *forks);
 
 /* destory */
 void				fork_destory(pthread_mutex_t *forks, int i);
-/* void philo_destory(t_philo *philos); */
 void				philo_destory(t_philo *philos, int i);
 void				all_free(t_info *input, pthread_mutex_t *forks,
 						t_philo *philos);
@@ -100,4 +99,5 @@ void				*ft_calloc(size_t count, size_t size);
 long int			create_log_time(t_philo *philo);
 long int			get_now_time(void);
 void				actual_usleep(long int sleep_time);
+long int			diff_time(struct timeval now);
 #endif

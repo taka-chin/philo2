@@ -6,7 +6,7 @@
 /*   By: tyamauch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 20:55:31 by tyamauch          #+#    #+#             */
-/*   Updated: 2024/04/22 17:06:23 by tyamauch         ###   ########.fr       */
+/*   Updated: 2024/04/22 18:53:35 by tyamauch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static bool	is_hunger(t_philo *philos)
 	while (i < philos->info->number)
 	{
 		pthread_mutex_lock(&philos[i].mutex_philo);
-		if (get_now_time() - philos[i].active_time > philos->info->time_die)
+		if (diff_time(philos[i].active_time) > philos->info->time_die)
 		{
 			pthread_mutex_unlock(&philos[i].mutex_philo);
 			put_log(&philos[i], DIED);

@@ -6,7 +6,7 @@
 /*   By: tyamauch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 20:59:23 by tyamauch          #+#    #+#             */
-/*   Updated: 2024/04/22 17:07:12 by tyamauch         ###   ########.fr       */
+/*   Updated: 2024/04/22 19:03:23 by tyamauch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,6 @@ static bool	set_value(t_info *input, t_philo *philos, pthread_mutex_t *forks)
 		}
 		philos[i].id = i + 1;
 		philos[i].eat_count = 0;
-		philos[i].active_time = 0;
 		philos[i].is_dead = false;
 		philos[i].r_fork = &forks[i];
 		if (i == input->number - 1)

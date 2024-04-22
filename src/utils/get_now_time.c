@@ -6,7 +6,7 @@
 /*   By: tyamauch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 22:16:08 by tyamauch          #+#    #+#             */
-/*   Updated: 2024/04/22 17:43:44 by tyamauch         ###   ########.fr       */
+/*   Updated: 2024/04/22 19:04:15 by tyamauch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 long int	get_now_time(void)
 {
 	struct timeval	tp;
-	long int		now_stime;
-	long int		now_utime;
+	long long		now_stime;
+	long long		now_utime;
 
 	gettimeofday(&tp, NULL);
 	now_stime = tp.tv_sec * 1000000;

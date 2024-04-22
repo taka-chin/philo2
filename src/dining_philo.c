@@ -6,7 +6,7 @@
 /*   By: tyamauch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 20:58:29 by tyamauch          #+#    #+#             */
-/*   Updated: 2024/04/22 16:27:46 by tyamauch         ###   ########.fr       */
+/*   Updated: 2024/04/22 18:51:19 by tyamauch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,16 @@ static void	p_create(t_philo *philos)
 	int				i;
 	t_philo			*p;
 	struct timeval	base_time;
-	long int		base_active_time;
 
 	i = 0;
 	gettimeofday(&base_time, NULL);
-	base_active_time = get_now_time();
 	while (i < philos->info->number)
 	{
 		p = &philos[i++];
 		p->start_time.tv_sec = base_time.tv_sec;
 		p->start_time.tv_usec = base_time.tv_usec;
-		p->active_time = base_active_time;
+		p->active_time.tv_sec = base_time.tv_sec;
+		p->active_time.tv_usec = base_time.tv_usec;
 		pthread_create(&p->thread, NULL, routine, p);
 	}
 }

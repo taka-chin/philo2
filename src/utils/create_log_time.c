@@ -6,7 +6,7 @@
 /*   By: tyamauch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 22:15:40 by tyamauch          #+#    #+#             */
-/*   Updated: 2024/04/21 20:02:55 by tyamauch         ###   ########.fr       */
+/*   Updated: 2024/04/22 19:03:59 by tyamauch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 long int	create_log_time(t_philo *philo)
 {
 	struct timeval	tp;
-	long int		log_stime;
-	long int		log_utime;
+	long long		log_stime;
+	long long		log_utime;
 
 	gettimeofday(&tp, NULL);
 	log_stime = (tp.tv_sec - philo->start_time.tv_sec) * 1000000;

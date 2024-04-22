@@ -4,9 +4,9 @@ CC = cc
 
 CFLAGS = -Wall -Wextra -Werror
 CFLAGS += -pthread
-CFLAGS += -fsanitize=thread
+# CFLAGS += -fsanitize=thread
 # CFLAGS += -fsanitize=address
-CFLAGS += -g
+# CFLAGS += -g
 
 SRCS_DIR = src
 UTILES_DIR = utils

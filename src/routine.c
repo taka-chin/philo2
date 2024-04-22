@@ -6,7 +6,7 @@
 /*   By: tyamauch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 22:10:39 by tyamauch          #+#    #+#             */
-/*   Updated: 2024/04/22 16:15:44 by tyamauch         ###   ########.fr       */
+/*   Updated: 2024/04/22 19:03:42 by tyamauch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void	eating(t_philo *philo)
 	put_log(philo, EATING);
 	actual_usleep(philo->info->time_eat);
 	pthread_mutex_lock(&philo->mutex_philo);
-	philo->active_time = get_now_time();
+	gettimeofday(&philo->active_time, NULL);
 	philo->eat_count++;
 	pthread_mutex_unlock(&philo->mutex_philo);
 	pthread_mutex_unlock(philo->l_fork);
