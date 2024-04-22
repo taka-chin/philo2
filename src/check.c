@@ -6,7 +6,7 @@
 /*   By: tyamauch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 20:55:31 by tyamauch          #+#    #+#             */
-/*   Updated: 2024/04/21 18:16:26 by tyamauch         ###   ########.fr       */
+/*   Updated: 2024/04/22 17:06:23 by tyamauch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ static bool	is_satiety(t_philo *philos)
 
 bool	finish_check(t_philo *philos)
 {
-	if (philos->info->must_eat == -1)
+	if (philos->info->must_eat == -2)
 	{
 		if (is_hunger(philos))
 			return (true);

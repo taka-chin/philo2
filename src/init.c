@@ -6,11 +6,26 @@
 /*   By: tyamauch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 20:59:23 by tyamauch          #+#    #+#             */
-/*   Updated: 2024/04/21 17:49:58 by tyamauch         ###   ########.fr       */
+/*   Updated: 2024/04/22 17:07:12 by tyamauch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+static bool	over_flow_check(t_info *info)
+{
+	if (info->number == -1)
+		return (true);
+	if (info->time_die == -1)
+		return (true);
+	if (info->time_eat == -1)
+		return (true);
+	if (info->time_sleep == -1)
+		return (true);
+	if (info->must_eat == -1)
+		return (true);
+	return (false);
+}
 
 t_info	*init_info(int argc, char **input)
 {
@@ -22,14 +37,20 @@ t_info	*init_info(int argc, char **input)
 		ft_put_error(CALLOC_ERROR);
 		return (NULL);
 	}
-	info->number = ft_atoi(input[1]);
-	info->time_die = ft_atoi(input[2]);
-	info->time_eat = ft_atoi(input[3]);
-	info->time_sleep = ft_atoi(input[4]);
+	info->number = ft_plus_atoi(input[1]);
+	info->time_die = ft_plus_atoi(input[2]);
+	info->time_eat = ft_plus_atoi(input[3]);
+	info->time_sleep = ft_plus_atoi(input[4]);
 	if (argc == 6 && input[5] != 0)
-		info->must_eat = ft_atoi(input[5]);
+		info->must_eat = ft_plus_atoi(input[5]);
 	else
-		info->must_eat = -1;
+		info->must_eat = -2;
+	if (over_flow_check(info))
+	{
+		ft_put_error(OVER_FLOW_ERROR);
+		free(info);
+		return (NULL);
+	}
 	return (info);
 }
 

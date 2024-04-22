@@ -6,7 +6,7 @@ CFLAGS = -Wall -Wextra -Werror
 CFLAGS += -pthread
 CFLAGS += -fsanitize=thread
 # CFLAGS += -fsanitize=address
-# CFLAGS += -g
+CFLAGS += -g
 
 SRCS_DIR = src
 UTILES_DIR = utils
@@ -22,7 +22,7 @@ SRCS	:=	main.c \
 			$(UTILES_DIR)/ft_isdigit.c \
 			$(UTILES_DIR)/ft_bzero.c \
 			$(UTILES_DIR)/ft_calloc.c \
-			$(UTILES_DIR)/ft_atoi.c \
+			$(UTILES_DIR)/ft_plus_atoi.c \
 			$(UTILES_DIR)/ft_put_error.c \
 			$(UTILES_DIR)/create_log_time.c \
 			$(UTILES_DIR)/get_now_time.c \

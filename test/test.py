@@ -75,3 +75,21 @@ elif sys.argv[1] == "11":
 elif sys.argv[1] == "12":
     result = subprocess.run(["../philo", "2", "800", "200", ""])
     print(result)
+
+#  case12 error case
+# ./philo 2 800 200 ""
+elif sys.argv[1] == "13":
+    result = subprocess.run(["../philo", "4", "410", "300", "200"])
+    print(result)
+
+#  case12 error case INT_MAX + 1
+# ./philo 2 800 200 ""
+elif sys.argv[1] == "14":
+    result = subprocess.run(["../philo", "4", "2147483648", "300", "200"])
+    print(result)
+
+#  case12 error case INT_MIN
+# ./philo 2 800 200 ""
+elif sys.argv[1] == "15":
+    result = subprocess.run(["../philo", "4", "-2147483648", "300", "200"])
+    print(result)

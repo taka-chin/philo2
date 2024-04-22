@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tyamauch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/20 20:53:20 by tyamauch          #+#    #+#             */
-/*   Updated: 2024/04/22 15:06:01 by tyamauch         ###   ########.fr       */
+/*   Created: 2024/04/22 17:31:44 by tyamauch          #+#    #+#             */
+/*   Updated: 2024/04/22 17:31:47 by tyamauch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,8 @@ enum				e_error_type
 {
 	ARGS_ERROR,
 	CALLOC_ERROR,
-	PTHREAD_ERROR
+	PTHREAD_ERROR,
+	OVER_FLOW_ERROR,
 };
 
 /* 行動のenum */
@@ -92,7 +93,7 @@ void				put_log(t_philo *philo, int e_action);
 
 /* utils */
 int					ft_isdigit(int c);
-int					ft_atoi(const char *str);
+int					ft_plus_atoi(const char *str);
 void				ft_put_error(int e_error_type);
 void				ft_bzero(void *s, size_t n);
 void				*ft_calloc(size_t count, size_t size);
